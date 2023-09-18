@@ -1,0 +1,51 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"store/*": ["src/store/*"],
+			"components/*": ["src/components/*"],
+			"containers/*": ["src/containers/*"],
+			"pages/*": ["src/pages/*"],
+			"utils/*": ["src/utils/*"],
+			"styles/*": ["src/styles/*"],
+			"types/*": ["src/types/*"],
+			"i18n": ["src/i18n"],
+			"react-dom": ["@hot-loader/react-dom"],
+			"jest/*": [".jest/*"],
+			"storybook/*": [".storybook/*"],
+			"src/*": ["src/*"],
+			"*": ["*"]
+		},
+		"jsx": "react-jsx",
+		"module": "commonjs",
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"preserveConstEnums": true,
+		"removeComments": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "es6",
+		"outDir": "dist",
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules"
+			}
+		]
+	},
+	"include": [
+		"./**/*"
+	],
+	"exclude": [
+		"./node_modules",
+		"./dist",
+		"./.idea"
+	]
+}

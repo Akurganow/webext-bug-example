@@ -1,0 +1,8 @@
+:root {
+	--basic-fontSize: 13px;
+	--basic-layout-gap: 0.5rem;
+}
+
+#root {
+	display: contents;
+}
