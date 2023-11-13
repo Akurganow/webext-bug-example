@@ -7,9 +7,9 @@ const Dotenv = require('dotenv-webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-module.exports = (config, { dev }) => merge(config, {
-	devtool: dev ? 'inline-source-map' : 'source-map',
-	module: merge(config.module ?? {}, {
+module.exports = (config, { dev }) => {
+	config.devtool = dev ? 'inline-source-map' : 'source-map'
+	config.module = merge(config.module ?? {}, {
 		rules: (get(config, 'module.rules', [])).concat([
 			{
 				test: /\.tsx?$/,
@@ -65,8 +65,8 @@ module.exports = (config, { dev }) => merge(config, {
 				exclude: /\.module\.css$/,
 			},
 		]),
-	}),
-	resolve: merge((get(config, 'config.resolve', {})), {
+	})
+	config.resolve = merge((get(config, 'config.resolve', {})), {
 		extensions: uniq(get(config, 'resolve.extensions', []).concat(['.tsx', '.ts', '.js', '.jsx', '.json'])),
 		alias: merge(get(config, 'resolve.alias', {}), {
 			components: path.resolve(__dirname, './src/components'),
@@ -83,8 +83,8 @@ module.exports = (config, { dev }) => merge(config, {
 			// jest: path.resolve(__dirname, './.jest'),
 			storybook: path.resolve(__dirname, './.storybook'),
 		}),
-	}),
-	plugins: get(config, 'plugins', []).concat([
+	})
+	config.plugins = get(config, 'plugins', []).concat([
 		new ForkTsCheckerWebpackPlugin({
 			typescript: {
 				configFile: path.resolve(__dirname, './tsconfig.json'),
@@ -98,5 +98,6 @@ module.exports = (config, { dev }) => merge(config, {
 			safe: true,
 			systemvars: true,
 		}),
-	]),
-})
+	])
+	return config
+}
